@@ -42,22 +42,6 @@ The Flexur Intranet Portal is an internal web application designed to serve as t
 | Hosting         | GitHub Pages (with Jekyll)      |
 | Build Tool      | None (static site)              |
 
-## 🏗️ Project Structure
-flexur-intranet/
-├── index.html                # Main landing page
-├── pages/                    # Secondary pages
-│   ├── announcements.html    # Company announcements
-│   ├── departments.html      # Department info
-│   ├── holidays.html         # Holiday calendar
-│   ├── office-layout.html    # Office floor plan
-│   └── resources.html        # Employee resources
-├── css/
-│   └── tailwind.css          # Custom CSS (if used)
-├── images/                   # All image assets
-├── _includes/                # Jekyll components
-│   ├── header.html           # Shared header
-│   └── footer.html           # Shared footer
-└── README.md                 # This file
 
 ## 🚀 Getting Started
 

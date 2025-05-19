@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holiday Calendar - Flexur IntraNet</title>
+
+    <!-- Tailwind CSS Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',      // Blue-600
+                        'primary-light': '#93C5FD', // Blue-300
+                        'primary-dark': '#1E40AF',  // Blue-800
+                        secondary: '#10B981',      // Emerald-500
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="bg-gray-900 shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <a class="flex items-center text-white text-xl font-semibold" href="../index.html">
+                    <img src="https://sp-ao.shortpixel.ai/client/to_auto,q_lossy,ret_img,w_129,h_47/https://www.flexur.com/wp-content/uploads/2022/01/header-logo.png"
+                        alt="Flexur Logo" class="h-10">
+                    <span class="ml-2">Flexur IntraNet</span>
+                </a>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-white hover:text-primary-light focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Desktop menu -->
+                <div class="hidden md:flex md:items-center space-x-4">
+                    <a class="text-gray-300 px-3 py-2 hover:text-white hover:border-b-2 hover:border-secondary transition" href="../index.html">Home</a>
+                    <a class="text-gray-300 px-3 py-2 hover:text-white hover:border-b-2 hover:border-secondary transition" href="comingsoon.html">Announcements</a>
+                    <a class="text-gray-300 px-3 py-2 hover:text-white hover:border-b-2 hover:border-secondary transition" href="comingsoon.html">Departments</a>
+                    <a class="text-gray-300 px-3 py-2 hover:text-white hover:border-b-2 hover:border-secondary transition" href="comingsoon.html">Resources</a>
+                    
+                    <!-- Other Links Dropdown -->
+                    <div class="relative group">
+                        <button class="text-gray-300 px-3 py-2 hover:text-white flex items-center focus:outline-none">
+                            Other Links
+                            <svg class="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                        <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 hidden group-hover:block">
+                            <a href="https://flexurvm01.flexur.com/LeavePortal/" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Leave Portal</a>
+                            <a href="https://flexur.oatspayroll.com/" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">OATS Portal</a>
+                            <div class="border-t border-gray-200 my-1"></div>
+                            <a href="https://www.flexur.com/" target="_blank" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Company Website</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mobile menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4">
+                <div class="flex flex-col space-y-2">
+                    <a class="text-gray-300 hover:bg-gray-800 hover:text-white px-3 py-2 rounded" href="../index.html">Home</a>
+                    <a class="text-gray-300 hover:bg-gray-800 hover:text-white px-3 py-2 rounded" href="pages/comingsoon.html">Announcements</a>
+                    <a class="text-gray-300 hover:bg-gray-800 hover:text-white px-3 py-2 rounded" href="pages/comingsoon.html">Departments</a>
+                    <a class="text-gray-300 hover:bg-gray-800 hover:text-white px-3 py-2 rounded" href="pages/comingsoon.html">Resources</a>
+                    <div class="relative">
+                        <button id="mobile-dropdown-button" class="text-gray-300 hover:bg-gray-800 hover:text-white px-3 py-2 rounded w-full text-left flex justify-between items-center">
+                            Other Links
+                            <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                <path id="mobile-dropdown-arrow" fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                        </button>
+                        <div id="mobile-dropdown" class="hidden mt-2 rounded-md bg-gray-800 py-2">
+                            <a href="https://flexurvm01.flexur.com/LeavePortal/" target="_blank" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700">Leave Portal</a>
+                            <a href="https://flexur.oatspayroll.com/" target="_blank" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700">OATS Portal</a>
+                            <div class="border-t border-gray-700 my-1"></div>
+                            <a href="https://www.flexur.com/" target="_blank" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700">Company Website</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Content -->
+    <div class="container mx-auto px-4 py-10">
+        <h1 class="text-3xl text-center font-bold text-gray-800 mb-8 relative">
+            Flexur Holiday Calendar for FY 2025-26
+            <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-secondary"></span>
+        </h1>
+        
+        <div class="bg-white rounded-lg shadow-md overflow-hidden max-w-4xl mx-auto mb-8">
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr class="bg-primary text-white">
+                            <th class="px-6 py-3 text-center">Sr. No.</th>
+                            <th class="px-6 py-3 text-center">Date</th>
+                            <th class="px-6 py-3 text-center">Day</th>
+                            <th class="px-6 py-3 text-center">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 text-center">1</td>
+                            <td class="px-6 py-4 text-center">01-May-25</td>
+                            <td class="px-6 py-4 text-center">Thursday</td>
+                            <td class="px-6 py-4 text-center">Labor Day</td>
+                        </tr>
+                        <tr class="bg-gray-50 hover:bg-gray-100">
+                            <td class="px-6 py-4 text-center">2</td>
+                            <td class="px-6 py-4 text-center">15-Aug-25</td>
+                            <td class="px-6 py-4 text-center">Friday</td>
+                            <td class="px-6 py-4 text-center">Independence Day</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 text-center">3</td>
+                            <td class="px-6 py-4 text-center">27-Aug-25</td>
+                            <td class="px-6 py-4 text-center">Wednesday</td>
+                            <td class="px-6 py-4 text-center">Ganesh Chaturthi</td>
+                        </tr>
+                        <tr class="bg-gray-50 hover:bg-gray-100">
+                            <td class="px-6 py-4 text-center">4</td>
+                            <td class="px-6 py-4 text-center">02-Oct-25</td>
+                            <td class="px-6 py-4 text-center">Thursday</td>
+                            <td class="px-6 py-4 text-center">Dassara/Mahatma Gandhi Jayanti</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 text-center">5</td>
+                            <td class="px-6 py-4 text-center">20-Oct-25</td>
+                            <td class="px-6 py-4 text-center">Monday</td>
+                            <td class="px-6 py-4 text-center">Diwali - Narak Chaturdashi</td>
+                        </tr>
+                        <tr class="bg-gray-50 hover:bg-gray-100">
+                            <td class="px-6 py-4 text-center">6</td>
+                            <td class="px-6 py-4 text-center">21-Oct-25</td>
+                            <td class="px-6 py-4 text-center">Tuesday</td>
+                            <td class="px-6 py-4 text-center">Diwali - Laxmipoojan</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 text-center">7</td>
+                            <td class="px-6 py-4 text-center">22-Oct-25</td>
+                            <td class="px-6 py-4 text-center">Wednesday</td>
+                            <td class="px-6 py-4 text-center">Diwali - Padwa</td>
+                        </tr>
+                        <tr class="bg-gray-50 hover:bg-gray-100">
+                            <td class="px-6 py-4 text-center">8</td>
+                            <td class="px-6 py-4 text-center">25-Dec-25</td>
+                            <td class="px-6 py-4 text-center">Thursday</td>
+                            <td class="px-6 py-4 text-center">Christmas</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 text-center">9</td>
+                            <td class="px-6 py-4 text-center">01-Jan-26</td>
+                            <td class="px-6 py-4 text-center">Thursday</td>
+                            <td class="px-6 py-4 text-center">New Year Day</td>
+                        </tr>
+                        <tr class="bg-gray-50 hover:bg-gray-100">
+                            <td class="px-6 py-4 text-center">10</td>
+                            <td class="px-6 py-4 text-center">26-Jan-26</td>
+                            <td class="px-6 py-4 text-center">Monday</td>
+                            <td class="px-6 py-4 text-center">Republic Day</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="px-6 py-4 text-center">11</td>
+                            <td class="px-6 py-4 text-center">03-Mar-26</td>
+                            <td class="px-6 py-4 text-center">Tuesday</td>
+                            <td class="px-6 py-4 text-center">Holi</td>
+                        </tr>
+                        <tr class="bg-gray-50 hover:bg-gray-100">
+                            <td class="px-6 py-4 text-center">12</td>
+                            <td class="px-6 py-4 text-center">19-Mar-26</td>
+                            <td class="px-6 py-4 text-center">Thursday</td>
+                            <td class="px-6 py-4 text-center">Gudi Padwa</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="bg-blue-50 border-l-4 border-blue-400 p-4 max-w-4xl mx-auto mb-8 rounded-md">
+            <div class="flex">
+                <div class="flex-shrink-0">
+                    <i class="fas fa-info-circle text-blue-500"></i>
+                </div>
+                <div class="ml-3">
+                    <p class="text-blue-800">
+                        <span class="font-bold">Note:</span> Please plan your work and personal commitments accordingly. For any questions regarding the holiday calendar, please contact the HR department.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center">
+            <a href="../index.html" class="inline-block bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-6 rounded-md transition duration-300">Back to Home</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h5 class="text-white text-lg font-semibold mb-4">Contact</h5>
+                    <p class="mb-2"><i class="fas fa-map-marker-alt mr-2 text-secondary"></i> 5825 Sunset way #2216
+                        Whitestown IN 46075</p>
+                    <p class="mb-2"><i class="fas fa-envelope mr-2 text-secondary"></i> <a href="mailto:info@flexur.com"
+                            class="hover:text-white transition">info@flexur.com</a></p>
+                    <p class="mb-2"><i class="fas fa-phone mr-2 text-secondary"></i> <a href="tel:+12244356827"
+                            class="hover:text-white transition">+1 (224) 435-6827</a></p>
+                </div>
+                <div>
+                    <h5 class="text-white text-lg font-semibold mb-4">Quick Links</h5>
+                    <ul class="space-y-2">
+                        <li><a href="pages/holidays.html" class="hover:text-white transition">Holiday Calendar</a></li>
+                        <li><a href="http://103.86.181.10/admin/FlexurDocs/EmployeeBenefits.pdf" target="_blank"
+                                class="hover:text-white transition">Employee Benefits</a></li>
+                        <li><a href="pages/office-layout.html" class="hover:text-white transition">Office Layout</a>
+                        </li>
+                        <li><a href="https://www.flexur.com/" target="_blank"
+                                class="hover:text-white transition">Company Website</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-white text-lg font-semibold mb-4">Follow Us</h5>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/Flexur-Systems-Pvt-Ltd-210144899154689" target="_blank"
+                            class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://in.linkedin.com/company/flexur-systems" target="_blank"
+                            class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p>&copy; 2025 Flexur Systems Pvt. Ltd. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- Scripts -->
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

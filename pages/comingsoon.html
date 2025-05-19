@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon - Flexur Systems</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <img src="https://sp-ao.shortpixel.ai/client/to_auto,q_lossy,ret_img,w_129,h_47/https://www.flexur.com/wp-content/uploads/2022/01/header-logo.png"
+                        alt="Flexur Logo" class="h-10">>
+                    <span class="text-2xl font-bold text-blue-600">Flexur</span>
+                    <span class="ml-1 text-2xl font-light text-gray-600">Systems</span>
+                </div>
+                <a href="/" class="text-gray-600 hover:text-blue-600 transition duration-300">
+                    <i class="fas fa-home mr-2"></i>Back to Home
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-8 animate-pulse">
+                    Coming Soon
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-600 mb-12 max-w-2xl mx-auto">
+                    We're working hard to bring you something amazing. Stay tuned!
+                </p>
+
+                <!-- Countdown Timer -->
+                <div class="grid grid-cols-4 gap-4 max-w-2xl mx-auto mb-16">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <div class="text-3xl font-bold text-blue-600" id="days">00</div>
+                        <div class="text-gray-500 mt-2">Days</div>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <div class="text-3xl font-bold text-blue-600" id="hours">00</div>
+                        <div class="text-gray-500 mt-2">Hours</div>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <div class="text-3xl font-bold text-blue-600" id="minutes">00</div>
+                        <div class="text-gray-500 mt-2">Minutes</div>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <div class="text-3xl font-bold text-blue-600" id="seconds">00</div>
+                        <div class="text-gray-500 mt-2">Seconds</div>
+                    </div>
+                </div>
+
+                <!-- Newsletter Form -->
+                <div class="max-w-md mx-auto mb-16">
+                    <form class="flex gap-4">
+                        <input type="email" 
+                               placeholder="Enter your email for updates" 
+                               class="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <button type="submit" 
+                                class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition duration-300">
+                            Notify Me
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Social Links -->
+                <div class="flex justify-center space-x-6 mb-16">
+                    <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300">
+                        <i class="fab fa-facebook fa-2x"></i>
+                    </a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300">
+                        <i class="fab fa-linkedin fa-2x"></i>
+                    </a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 transition duration-300">
+                        <i class="fab fa-twitter fa-2x"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200">
+        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+            <p class="text-center text-gray-600">
+                &copy; 2025 Flexur Systems. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Countdown Timer Script -->
+    <script>
+        // Set the launch date (example: 30 days from now)
+        const launchDate = new Date();
+        launchDate.setDate(launchDate.getDate() + 30);
+
+        function updateCountdown() {
+            const currentTime = new Date();
+            const diff = launchDate - currentTime;
+
+            const days = Math.floor(diff / 1000 / 60 / 60 / 24);
+            const hours = Math.floor(diff / 1000 / 60 / 60) % 24;
+            const minutes = Math.floor(diff / 1000 / 60) % 60;
+            const seconds = Math.floor(diff / 1000) % 60;
+
+            document.getElementById('days').innerHTML = days.toString().padStart(2, '0');
+            document.getElementById('hours').innerHTML = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').innerHTML = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').innerHTML = seconds.toString().padStart(2, '0');
+        }
+
+        // Update every second
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // Initial call
+    </script>
+</body>
+</html>
