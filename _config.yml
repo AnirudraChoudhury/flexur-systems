@@ -1,0 +1,6 @@
+title: Flexur Intranet Portal
+markdown: kramdown
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules

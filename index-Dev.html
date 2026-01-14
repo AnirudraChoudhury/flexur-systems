@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexur IntraNet - Employee Portal</title>
+
+    <!-- Tailwind CSS Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',      // Blue-600
+                        'primary-light': '#93C5FD', // Blue-300
+                        'primary-dark': '#1E40AF',  // Blue-800
+                        secondary: '#10B981',      // Emerald-500
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="bg-gray-900 shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <a class="flex items-center text-white text-xl font-semibold" href="#">
+                    <img src="https://sp-ao.shortpixel.ai/client/to_auto,q_lossy,ret_img,w_129,h_47/https://www.flexur.com/wp-content/uploads/2022/01/header-logo.png"
+                        alt="Flexur Logo" class="h-10">
+                    <span class="ml-2">Flexur IntraNet</span>
+                </a>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-white hover:text-primary-light focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Desktop menu -->
+                <div class="hidden md:flex md:items-center space-x-4">
+                    <a class="text-white border-b-2 border-secondary px-3 py-2 hover:text-primary-light transition"
+                        href="index.html">Home</a>
+                    <a class="text-gray-300 px-3 py-2 hover:text-white hover:border-b-2 hover:border-secondary transition"
+                        href="pages/comingsoon.html">Announcements</a>
+                    <a class="text-gray-300 px-3 py-2 hover:text-white hover:border-b-2 hover:border-secondary transition"
+                        href="pages/comingsoon.html">Departments</a>
+                    <a class="text-gray-300 px-3 py-2 hover:text-white hover:border-b-2 hover:border-secondary transition"
+                        href="pages/comingsoon.html">Resources</a>
+
+                    <!-- Other Links Dropdown -->
+                    <div class="relative group">
+                        <button class="text-gray-300 px-3 py-2 hover:text-white flex items-center focus:outline-none">
+                            Other Links
+                            <svg class="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                        <div
+                            class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 hidden group-hover:block">
+                            <a href="https://flexurvm01.flexur.com/LeavePortal/" target="_blank"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Leave Portal</a>
+                            <a href="https://flexur.oatspayroll.com/" target="_blank"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">OATS Portal</a>
+                            <div class="border-t border-gray-200 my-1"></div>
+                            <a href="https://www.flexur.com/" target="_blank"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Company Website</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4">
+                <div class="flex flex-col space-y-2">
+                    <a class="text-white bg-primary px-3 py-2 rounded" href="index.html">Home</a>
+                    <a class="text-gray-300 hover:bg-gray-800 hover:text-white px-3 py-2 rounded"
+                        href="pages/comingsoon.html">Announcements</a>
+                    <a class="text-gray-300 hover:bg-gray-800 hover:text-white px-3 py-2 rounded"
+                        href="pages/comingsoon.html">Departments</a>
+                    <a class="text-gray-300 hover:bg-gray-800 hover:text-white px-3 py-2 rounded"
+                        href="pages/comingsoon.html">Resources</a>
+                    <div class="relative">
+                        <button id="mobile-dropdown-button"
+                            class="text-gray-300 hover:bg-gray-800 hover:text-white px-3 py-2 rounded w-full text-left flex justify-between items-center">
+                            Other Links
+                            <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                <path id="mobile-dropdown-arrow" fill-rule="evenodd"
+                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                        <div id="mobile-dropdown" class="hidden mt-2 rounded-md bg-gray-800 py-2">
+                            <a href="https://flexurvm01.flexur.com/LeavePortal/" target="_blank"
+                                class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700">Leave Portal</a>
+                            <a href="https://flexur.oatspayroll.com/" target="_blank"
+                                class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700">OATS Portal</a>
+                            <div class="border-t border-gray-700 my-1"></div>
+                            <a href="https://www.flexur.com/" target="_blank"
+                                class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700">Company Website</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-purple-700 to-indigo-900 text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Welcome to Flexur IntraNet</h1>
+            <p class="text-xl max-w-2xl mx-auto">Your central hub for all company resources and information</p>
+        </div>
+    </section>
+
+    <!-- Quick Links Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl text-center font-bold text-gray-800 mb-12">Quick Links</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Holiday Card -->
+                <a href="pages/holidays.html"
+                    class="block group bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 transform hover:-translate-y-2 h-full">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-calendar-alt text-2xl text-secondary mr-3"></i>
+                            <h3 class="text-xl font-semibold text-primary">List of Holidays</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">View the official company holiday calendar for FY 2025-26</p>
+                        <div
+                            class="inline-block bg-primary group-hover:bg-primary-dark text-white font-semibold py-2 px-6 rounded-md transition duration-300">
+                            View Holidays
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Employee Benefits Card -->
+                <a href="http://103.86.181.10/admin/FlexurDocs/EmployeeBenefits.pdf" target="_blank"
+                    class="block group bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 transform hover:-translate-y-2 h-full">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-file-pdf text-2xl text-secondary mr-3"></i>
+                            <h3 class="text-xl font-semibold text-primary">Employee Benefits</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Access the employee benefits documentation</p>
+                        <div
+                            class="inline-block bg-primary group-hover:bg-primary-dark text-white font-semibold py-2 px-6 rounded-md transition duration-300">
+                            View Document
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Office Layout Card -->
+                <a href="pages/office-layout.html"
+                    class="block group bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 transform hover:-translate-y-2 h-full">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-building text-2xl text-secondary mr-3"></i>
+                            <h3 class="text-xl font-semibold text-primary">Office Layout</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">View the office floor plan and seating arrangements</p>
+                        <div
+                            class="inline-block bg-primary group-hover:bg-primary-dark text-white font-semibold py-2 px-6 rounded-md transition duration-300">
+                            View Layout
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+                <!-- Leave Portal Card -->
+                <a href="https://flexurvm01.flexur.com/LeavePortal/" target="_blank"
+                    class="block group bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 transform hover:-translate-y-2 h-full">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-door-open text-2xl text-secondary mr-3"></i>
+                            <h3 class="text-xl font-semibold text-primary">Leave Portal</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Access the leave management system</p>
+                        <div
+                            class="inline-block bg-primary group-hover:bg-primary-dark text-white font-semibold py-2 px-6 rounded-md transition duration-300">
+                            Go to Leave Portal
+                        </div>
+                    </div>
+                </a>
+
+                <!-- OATS Portal Card -->
+                <a href="https://flexur.oatspayroll.com/" target="_blank"
+                    class="block group bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 transform hover:-translate-y-2 h-full">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-money-bill-wave text-2xl text-secondary mr-3"></i>
+                            <h3 class="text-xl font-semibold text-primary">OATS Portal</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">Access the payroll and attendance system</p>
+                        <div
+                            class="inline-block bg-primary group-hover:bg-primary-dark text-white font-semibold py-2 px-6 rounded-md transition duration-300">
+                            Go to OATS Portal
+                        </div>
+                    </div>
+                </a>
+
+                <!-- IT Services Card -->
+                <!-- IT Services Card -->
+                <a href="https://thrush-ultimate-warthog.ngrok-free.app/" target="_blank"
+                    class="block group bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300 transform hover:-translate-y-2 h-full">
+                    <div class="p-6">
+                        <div class="flex items-center mb-4">
+                            <i class="fas fa-tools text-2xl text-secondary mr-3"></i>
+                            <h3 class="text-xl font-semibold text-primary">IT Services</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">IT support, tools, and request forms</p>
+                        <div
+                            class="inline-block bg-primary group-hover:bg-primary-dark text-white font-semibold py-2 px-6 rounded-md transition duration-300">
+                            Access Portal
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Announcements Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl text-center font-bold text-gray-800 mb-12">Company Announcements</h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                    <div class="text-sm text-gray-500 mb-2">May 19, 2025</div>
+                    <h3 class="text-xl font-semibold text-primary mb-2">Welcome to the New Intranet Portal</h3>
+                    <p class="text-gray-600">
+                        We're excited to launch our new employee intranet portal! This platform will serve as the
+                        central hub for all company resources, announcements, and tools. Explore the various sections
+                        and feel free to provide feedback as we continue to enhance the portal.
+                    </p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                    <div class="text-sm text-gray-500 mb-2">May 1, 2025</div>
+                    <h3 class="text-xl font-semibold text-primary mb-2">Labor Day Holiday Reminder</h3>
+                    <p class="text-gray-600">
+                        This is a reminder that our offices will be closed on Thursday, May 1, 2025, in observance of
+                        Labor Day. Regular operations will resume on Friday, May 2. Have a safe and enjoyable holiday!
+                    </p>
+                </div>
+                <div class="text-center mt-8">
+                    <a href="pages/comingsoon.html"
+                        class="inline-block border-2 border-primary hover:bg-primary text-primary hover:text-white font-semibold py-2 px-6 rounded-md transition duration-300">View
+                        All Announcements</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company Calendar -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl text-center font-bold text-gray-800 mb-12">Company Calendar</h2>
+            <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-8">
+                <h3 class="text-2xl font-semibold text-primary text-center mb-8">Upcoming Events</h3>
+
+                <div class="mb-6 flex overflow-hidden rounded-lg border border-gray-200">
+                    <div class="bg-primary text-white p-4 flex flex-col items-center justify-center min-w-[90px]">
+                        <span class="text-sm uppercase">Aug</span>
+                        <span class="text-3xl font-bold">15</span>
+                    </div>
+                    <div class="p-4 bg-gray-50 flex-grow">
+                        <h4 class="text-lg font-semibold text-primary">Independence Day - Holiday</h4>
+                        <p class="text-gray-600">Company Holiday - Offices Closed</p>
+                    </div>
+                </div>
+
+                <div class="mb-6 flex overflow-hidden rounded-lg border border-gray-200">
+                    <div class="bg-primary text-white p-4 flex flex-col items-center justify-center min-w-[90px]">
+                        <span class="text-sm uppercase">Aug</span>
+                        <span class="text-3xl font-bold">27</span>
+                    </div>
+                    <div class="p-4 bg-gray-50 flex-grow">
+                        <h4 class="text-lg font-semibold text-primary">Ganesh Chaturthi - Holiday</h4>
+                        <p class="text-gray-600">Company Holiday - Offices Closed</p>
+                    </div>
+                </div>
+
+                <div class="mb-6 flex overflow-hidden rounded-lg border border-gray-200">
+                    <div class="bg-primary text-white p-4 flex flex-col items-center justify-center min-w-[90px]">
+                        <span class="text-sm uppercase">Oct</span>
+                        <span class="text-3xl font-bold">2</span>
+                    </div>
+                    <div class="p-4 bg-gray-50 flex-grow">
+                        <h4 class="text-lg font-semibold text-primary">Dassara/Mahatma Gandhi Jayanti - Holiday</h4>
+                        <p class="text-gray-600">Company Holiday - Offices Closed</p>
+                    </div>
+                </div>
+
+                <div class="text-center mt-8">
+                    <a href="pages/holidays.html"
+                        class="inline-block border-2 border-primary hover:bg-primary text-primary hover:text-white font-semibold py-2 px-6 rounded-md transition duration-300">View
+                        Full Calendar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h5 class="text-white text-lg font-semibold mb-4">Contact</h5>
+                    <p class="mb-2"><i class="fas fa-map-marker-alt mr-2 text-secondary"></i> 5825 Sunset way #2216
+                        Whitestown IN 46075</p>
+                    <p class="mb-2"><i class="fas fa-envelope mr-2 text-secondary"></i> <a href="mailto:info@flexur.com"
+                            class="hover:text-white transition">info@flexur.com</a></p>
+                    <p class="mb-2"><i class="fas fa-phone mr-2 text-secondary"></i> <a href="tel:+12244356827"
+                            class="hover:text-white transition">+1 (224) 435-6827</a></p>
+                </div>
+                <div>
+                    <h5 class="text-white text-lg font-semibold mb-4">Quick Links</h5>
+                    <ul class="space-y-2">
+                        <li><a href="pages/holidays.html" class="hover:text-white transition">Holiday Calendar</a></li>
+                        <li><a href="http://103.86.181.10/admin/FlexurDocs/EmployeeBenefits.pdf" target="_blank"
+                                class="hover:text-white transition">Employee Benefits</a></li>
+                        <li><a href="pages/office-layout.html" class="hover:text-white transition">Office Layout</a>
+                        </li>
+                        <li><a href="https://www.flexur.com/" target="_blank"
+                                class="hover:text-white transition">Company Website</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-white text-lg font-semibold mb-4">Follow Us</h5>
+                    <div class="flex space-x-4">
+                        <a href="https://www.facebook.com/Flexur-Systems-Pvt-Ltd-210144899154689" target="_blank"
+                            class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://in.linkedin.com/company/flexur-systems" target="_blank"
+                            class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p>&copy; 2025 Flexur Systems Pvt. Ltd. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function () {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Mobile dropdown toggle
+        document.getElementById('mobile-dropdown-button').addEventListener('click', function () {
+            const dropdown = document.getElementById('mobile-dropdown');
+            const arrow = document.getElementById('mobile-dropdown-arrow');
+            dropdown.classList.toggle('hidden');
+            arrow.classList.toggle('rotate-180');
+        });
+    </script>
+</body>
+
+</html>

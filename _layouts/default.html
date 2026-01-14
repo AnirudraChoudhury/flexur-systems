@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title | default: site.title }}</title>
+
+    <!-- Bootstrap CSS (CDN) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUa6mY5Y2g2k6b1j7WxQ6b5v3yZ0p1qX+q7s6Y5fL3lF6JYfX8mV8X5p3X9P" crossorigin="anonymous">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Site overrides / compatibility helpers -->
+    <link rel="stylesheet" href="/assets/css/site.css">
+</head>
+
+<body>
+    {% include header.html %}
+
+    <main>
+        {{ content }}
+    </main>
+
+    {% include footer.html %}
+
+    <!-- Bootstrap JS (CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoYz1H2kM1QZ6i3b0ZQ5Q5g5k5Y5k5Q5" crossorigin="anonymous"></script>
+
+    <!-- Page scripts -->
+    <script>
+        // Mobile menu toggle
+        const mobileBtn = document.getElementById('mobile-menu-button');
+        if (mobileBtn) {
+            mobileBtn.addEventListener('click', function () {
+                const mobileMenu = document.getElementById('mobile-menu');
+                if (mobileMenu) mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        const mobileDropdownBtn = document.getElementById('mobile-dropdown-button');
+        if (mobileDropdownBtn) {
+            mobileDropdownBtn.addEventListener('click', function () {
+                const dropdown = document.getElementById('mobile-dropdown');
+                const arrow = document.getElementById('mobile-dropdown-arrow');
+                if (dropdown) dropdown.classList.toggle('hidden');
+                if (arrow) arrow.classList.toggle('rotate-180');
+            });
+        }
+    </script>
+</body>
+
+</html>

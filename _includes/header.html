@@ -1,0 +1,89 @@
+    <!-- Header -->
+    <header class="bg-gray-900 shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <a class="flex items-center text-white text-xl font-semibold" href="#">
+                    <img src="https://sp-ao.shortpixel.ai/client/to_auto,q_lossy,ret_img,w_129,h_47/https://www.flexur.com/wp-content/uploads/2022/01/header-logo.png"
+                        alt="Flexur Logo" class="h-10">
+                    <span class="ml-2">Flexur IntraNet</span>
+                </a>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-white hover:text-primary-light focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Desktop menu -->
+                <div class="hidden md:flex md:items-center space-x-4">
+                    <a class="text-white border-b-2 border-secondary px-3 py-2 hover:text-primary-light transition"
+                        href="index.html">Home</a>
+                    <a class="text-gray-300 px-3 py-2 hover:text-white hover:border-b-2 hover:border-secondary transition"
+                        href="pages/comingsoon.html">Announcements</a>
+                    <a class="text-gray-300 px-3 py-2 hover:text-white hover:border-b-2 hover:border-secondary transition"
+                        href="pages/comingsoon.html">Departments</a>
+                    <a class="text-gray-300 px-3 py-2 hover:text-white hover:border-b-2 hover:border-secondary transition"
+                        href="pages/comingsoon.html">Resources</a>
+
+                    <!-- Other Links Dropdown -->
+                    <div class="relative group">
+                        <button class="text-gray-300 px-3 py-2 hover:text-white flex items-center focus:outline-none">
+                            Other Links
+                            <svg class="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                        <div
+                            class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10 hidden group-hover:block">
+                            <a href="https://flexurvm01.flexur.com/LeavePortal/" target="_blank"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Leave Portal</a>
+                            <a href="https://flexur.oatspayroll.com/" target="_blank"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">OATS Portal</a>
+                            <div class="border-t border-gray-200 my-1"></div>
+                            <a href="https://www.flexur.com/" target="_blank"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Company Website</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4">
+                <div class="flex flex-col space-y-2">
+                    <a class="text-white bg-primary px-3 py-2 rounded" href="index.html">Home</a>
+                    <a class="text-gray-300 hover:bg-gray-800 hover:text-white px-3 py-2 rounded"
+                        href="pages/comingsoon.html">Announcements</a>
+                    <a class="text-gray-300 hover:bg-gray-800 hover:text-white px-3 py-2 rounded"
+                        href="pages/comingsoon.html">Departments</a>
+                    <a class="text-gray-300 hover:bg-gray-800 hover:text-white px-3 py-2 rounded"
+                        href="pages/comingsoon.html">Resources</a>
+                    <div class="relative">
+                        <button id="mobile-dropdown-button"
+                            class="text-gray-300 hover:bg-gray-800 hover:text-white px-3 py-2 rounded w-full text-left flex justify-between items-center">
+                            Other Links
+                            <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                <path id="mobile-dropdown-arrow" fill-rule="evenodd"
+                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                        <div id="mobile-dropdown" class="hidden mt-2 rounded-md bg-gray-800 py-2">
+                            <a href="https://flexurvm01.flexur.com/LeavePortal/" target="_blank"
+                                class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700">Leave Portal</a>
+                            <a href="https://flexur.oatspayroll.com/" target="_blank"
+                                class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700">OATS Portal</a>
+                            <div class="border-t border-gray-700 my-1"></div>
+                            <a href="https://www.flexur.com/" target="_blank"
+                                class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700">Company Website</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
